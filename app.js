@@ -12,7 +12,15 @@ const msgTpl = document.getElementById("msgTpl");
 const simulateBtn = document.getElementById("simulateBtn");
 
 const APP_VERSION = "v0.1 Beta";
+const MAX_LOG_ITEMS = 120;
+const MAX_MESSAGE_ITEMS = 80;
 let googleAccount = null;
+const timeFormatter = new Intl.DateTimeFormat("zh-CN", {
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  hour12: false,
+});
 
 const tasks = [
   { title: "收集需求并拆分里程碑", status: "done" },
@@ -60,6 +68,7 @@ const workflowLogs = [
 
 function renderTasks() {
   taskList.innerHTML = "";
+  const fragment = document.createDocumentFragment();
   tasks.forEach((task) => {
     const li = document.createElement("li");
     li.className = "task-item";
@@ -67,12 +76,14 @@ function renderTasks() {
       <div>${task.title}</div>
       <span class="status ${task.status}">${task.status.toUpperCase()}</span>
     `;
-    taskList.appendChild(li);
+    fragment.appendChild(li);
   });
+  taskList.appendChild(fragment);
 }
 
 function renderProviders() {
   providerList.innerHTML = "";
+  const fragment = document.createDocumentFragment();
   providers.forEach((provider) => {
     const item = document.createElement("div");
     item.className = "stack-item";
@@ -83,22 +94,26 @@ function renderProviders() {
       </div>
       <span class="status ${provider.status}">${provider.status.toUpperCase()}</span>
     `;
-    providerList.appendChild(item);
+    fragment.appendChild(item);
   });
+  providerList.appendChild(fragment);
 }
 
 function renderSkills() {
   skillList.innerHTML = "";
+  const fragment = document.createDocumentFragment();
   skills.forEach((skill) => {
     const item = document.createElement("li");
     item.className = "pill";
     item.textContent = skill;
-    skillList.appendChild(item);
+    fragment.appendChild(item);
   });
+  skillList.appendChild(fragment);
 }
 
 function renderPlatforms() {
   platformList.innerHTML = "";
+  const fragment = document.createDocumentFragment();
   platforms.forEach((platform, index) => {
     const item = document.createElement("div");
     item.className = "stack-item";
@@ -106,21 +121,32 @@ function renderPlatforms() {
       <div>${platform.name}</div>
       <button data-index="${index}" class="tiny">${platform.connected ? "已连接" : "连接"}</button>
     `;
-    platformList.appendChild(item);
+    fragment.appendChild(item);
   });
+  platformList.appendChild(fragment);
+}
+
+function getTimeStamp() {
+  return timeFormatter.format(new Date());
 }
 
 function pushLog(text) {
   const item = document.createElement("li");
-  item.textContent = `${new Date().toLocaleTimeString()} - ${text}`;
+  item.textContent = `${getTimeStamp()} - ${text}`;
   logList.prepend(item);
+  while (logList.children.length > MAX_LOG_ITEMS) {
+    logList.removeChild(logList.lastElementChild);
+  }
 }
 
 function appendMessage(role, content) {
   const msg = msgTpl.content.firstElementChild.cloneNode(true);
-  msg.querySelector(".meta").textContent = `${role} · ${new Date().toLocaleTimeString()}`;
+  msg.querySelector(".meta").textContent = `${role} · ${getTimeStamp()}`;
   msg.querySelector(".content").textContent = content;
   messages.appendChild(msg);
+  while (messages.children.length > MAX_MESSAGE_ITEMS) {
+    messages.removeChild(messages.firstElementChild);
+  }
   messages.scrollTop = messages.scrollHeight;
 }
 

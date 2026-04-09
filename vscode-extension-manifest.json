@@ -1,0 +1,118 @@
+{
+  "name": "manus-agent",
+  "displayName": "Manus Agent",
+  "description": "AI-powered agent platform with 40+ tools and 96+ commands",
+  "version": "1.0.0",
+  "publisher": "Qing060325",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Qing060325/-agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Qing060325/-agent/issues"
+  },
+  "homepage": "https://github.com/Qing060325/-agent",
+  "keywords": [
+    "ai",
+    "agent",
+    "tools",
+    "commands",
+    "automation",
+    "productivity"
+  ],
+  "categories": [
+    "Other",
+    "Productivity",
+    "Developer Tools"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "activationEvents": [
+    "onCommand:manus.executeCommand",
+    "onCommand:manus.showDashboard"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "manus.executeCommand",
+        "title": "Manus: Execute Command"
+      },
+      {
+        "command": "manus.showDashboard",
+        "title": "Manus: Show Dashboard"
+      },
+      {
+        "command": "manus.listCommands",
+        "title": "Manus: List All Commands"
+      },
+      {
+        "command": "manus.listTools",
+        "title": "Manus: List All Tools"
+      },
+      {
+        "command": "manus.createSession",
+        "title": "Manus: Create Session"
+      },
+      {
+        "command": "manus.openTerminal",
+        "title": "Manus: Open Terminal"
+      },
+      {
+        "command": "manus.showSettings",
+        "title": "Manus: Show Settings"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "manus.executeCommand",
+        "key": "ctrl+shift+m",
+        "mac": "cmd+shift+m"
+      },
+      {
+        "command": "manus.showDashboard",
+        "key": "ctrl+shift+d",
+        "mac": "cmd+shift+d"
+      }
+    ],
+    "configuration": {
+      "title": "Manus Agent",
+      "properties": {
+        "manus.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Manus Agent extension"
+        },
+        "manus.port": {
+          "type": "number",
+          "default": 5000,
+          "description": "Port for Manus Agent API"
+        },
+        "manus.theme": {
+          "type": "string",
+          "enum": ["light", "dark", "auto"],
+          "default": "auto",
+          "description": "Theme for Manus UI"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run build && npm run lint",
+    "lint": "eslint src",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@qing060325/manus-agent": "^1.0.0"
+  }
+}

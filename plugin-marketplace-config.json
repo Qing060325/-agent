@@ -1,0 +1,94 @@
+{
+  "plugin": {
+    "id": "manus-agent-core",
+    "name": "Manus Agent",
+    "version": "1.0.0",
+    "description": "Enterprise-grade AI Agent platform with 40+ tools and 96+ commands",
+    "author": "Qing060325",
+    "license": "MIT",
+    "repository": "https://github.com/Qing060325/-agent",
+    "homepage": "https://github.com/Qing060325/-agent",
+    "bugs": "https://github.com/Qing060325/-agent/issues",
+    "keywords": [
+      "ai",
+      "agent",
+      "tools",
+      "commands",
+      "automation",
+      "enterprise"
+    ],
+    "category": "productivity",
+    "tags": [
+      "ai-powered",
+      "enterprise",
+      "automation",
+      "multi-tool",
+      "command-line"
+    ],
+    "rating": 5.0,
+    "downloads": 0,
+    "maintainers": [
+      {
+        "name": "Qing060325",
+        "email": "qing060325@gmail.com"
+      }
+    ]
+  },
+  "features": [
+    {
+      "name": "40+ Tools",
+      "description": "File operations, code execution, web, database, data analysis, media, documents, cloud integration"
+    },
+    {
+      "name": "96+ Commands",
+      "description": "Organized in 14 categories with full documentation and aliases"
+    },
+    {
+      "name": "Enterprise Features",
+      "description": "RBAC, audit logging, data governance, compliance"
+    },
+    {
+      "name": "IDE Integration",
+      "description": "VS Code, JetBrains, Vim, Neovim, Emacs support"
+    },
+    {
+      "name": "Web UI",
+      "description": "REST API and dashboard for web interface"
+    },
+    {
+      "name": "Plugin Marketplace",
+      "description": "Discover and install plugins from the marketplace"
+    }
+  ],
+  "requirements": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0",
+    "os": ["linux", "macos", "windows"]
+  },
+  "installation": {
+    "npm": "npm install -g @qing060325/manus-agent",
+    "yarn": "yarn global add @qing060325/manus-agent",
+    "pnpm": "pnpm add -g @qing060325/manus-agent"
+  },
+  "marketplace": {
+    "registryUrl": "https://plugins.manus.im",
+    "publishUrl": "https://plugins.manus.im/publish",
+    "downloadUrl": "https://plugins.manus.im/download/manus-agent-core/1.0.0"
+  },
+  "changelog": {
+    "v1.0.0": {
+      "date": "2026-04-10",
+      "changes": [
+        "Initial release",
+        "40 tools with full documentation",
+        "96 commands organized in 14 categories",
+        "Enterprise features (RBAC, audit, governance)",
+        "IDE integrations (VS Code, JetBrains, Vim, Neovim, Emacs)",
+        "Web UI service with REST API",
+        "Plugin marketplace integration",
+        "Complete test coverage",
+        "Production-ready"
+      ]
+    }
+  }
+}

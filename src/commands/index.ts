@@ -12,6 +12,7 @@ export { MEDIA_COMMANDS } from './MediaCommands.js';
 export { DOCUMENT_COMMANDS } from './DocumentCommands.js';
 export { CLOUD_COMMANDS } from './CloudCommands.js';
 export { ADVANCED_WEB_COMMANDS } from './AdvancedWebCommands.js';
+export { EXTENSION_COMMANDS } from './ExtensionCommands.js';
 
 import { CommandRegistry } from './CommandRegistry.js';
 import { BASIC_COMMANDS } from './BasicCommands.js';
@@ -27,6 +28,7 @@ import { MEDIA_COMMANDS } from './MediaCommands.js';
 import { DOCUMENT_COMMANDS } from './DocumentCommands.js';
 import { CLOUD_COMMANDS } from './CloudCommands.js';
 import { ADVANCED_WEB_COMMANDS } from './AdvancedWebCommands.js';
+import { EXTENSION_COMMANDS } from './ExtensionCommands.js';
 
 /**
  * Initialize all commands
@@ -71,12 +73,15 @@ export function initializeAllCommands(registry: CommandRegistry): void {
   // Register advanced web commands
   ADVANCED_WEB_COMMANDS.forEach((cmd) => registry.register(cmd));
 
+  // Register extension commands
+  EXTENSION_COMMANDS.forEach((cmd) => registry.register(cmd));
+
   const stats = registry.getStats();
   console.log(
     `[commands] Registered ${stats.totalCommands} commands with ${stats.totalAliases} aliases`
   );
   console.log(
-    `[commands] Categories: Basic(9), File(6), Code(7), Web(4), Agent(3), MCP(3), Advanced(8), Database(8), Analysis(8), Media(8), Document(8), Cloud(8), AdvancedWeb(8)`
+    `[commands] Categories: Basic(9), File(6), Code(7), Web(4), Agent(3), MCP(3), Advanced(8), Database(8), Analysis(8), Media(8), Document(8), Cloud(8), AdvancedWeb(8), Extension(8)`
   );
 }
 
@@ -98,6 +103,7 @@ export function getAllCommandCategories() {
     document: DOCUMENT_COMMANDS,
     cloud: CLOUD_COMMANDS,
     advancedWeb: ADVANCED_WEB_COMMANDS,
+    extension: EXTENSION_COMMANDS,
   };
 }
 
@@ -119,6 +125,7 @@ export function getCommandStats() {
     document: DOCUMENT_COMMANDS.length,
     cloud: CLOUD_COMMANDS.length,
     advancedWeb: ADVANCED_WEB_COMMANDS.length,
+    extension: EXTENSION_COMMANDS.length,
     total: BASIC_COMMANDS.length +
            FILE_COMMANDS.length +
            CODE_COMMANDS.length +
@@ -131,6 +138,7 @@ export function getCommandStats() {
            MEDIA_COMMANDS.length +
            DOCUMENT_COMMANDS.length +
            CLOUD_COMMANDS.length +
-           ADVANCED_WEB_COMMANDS.length,
+           ADVANCED_WEB_COMMANDS.length +
+           EXTENSION_COMMANDS.length,
   };
 }

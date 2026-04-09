@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { CommandRegistry } from '../commands/CommandRegistry.js';
 import { BASIC_COMMANDS } from '../commands/BasicCommands.js';
 import { FILE_COMMANDS } from '../commands/FileCommands.js';
@@ -35,7 +35,7 @@ describe('Commands', () => {
 
     it('should search commands', () => {
       BASIC_COMMANDS.forEach((cmd) => registry.register(cmd));
-      const results = registry.search('help');
+      const results = registry.searchCommands('help');
       expect(results.length).toBeGreaterThan(0);
     });
   });

@@ -1,0 +1,73 @@
+{
+  "name": "@qing060325/manus-agent",
+  "version": "1.0.0",
+  "description": "Manus Agent v1.0 - Enterprise-grade AI Agent Platform",
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "manus": "dist/cli.js"
+  },
+  "scripts": {
+    "dev": "tsx src/entrypoints/cli.tsx",
+    "build": "bun build src/entrypoints/cli.tsx --outdir dist --target node --external react/compiler-runtime --define \"MACRO.VERSION='\\\"1.0.0\\\"'\" --define \"MACRO.BUILD_TIME='\\\"$(date -I)\\\"'\" --define \"MACRO.FEEDBACK_CHANNEL='\\\"stable\\\"'\"",
+    "build:watch": "bun build src/entrypoints/cli.tsx --outdir dist --target node --watch",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint src --ext .ts,.tsx",
+    "format": "prettier --write src",
+    "type-check": "tsc --noEmit",
+    
+    "publish": "npm publish --access public"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "cli",
+    "typescript",
+    "mcp",
+    "tools",
+    "automation"
+  ],
+  "author": "Qing060325",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Qing060325/-agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Qing060325/-agent/issues"
+  },
+  "homepage": "https://github.com/Qing060325/-agent#readme",
+  "dependencies": {
+    "react": "^19.0.0-rc",
+    "ink": "^5.0.0",
+    "zustand": "^4.4.0",
+    "zod": "^3.22.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.0",
+    "chalk": "^5.3.0",
+    "ora": "^8.0.0",
+    "commander": "^11.0.0",
+    "fs-extra": "^11.1.0",
+    "glob": "^10.3.0",
+    "yaml": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/fs-extra": "^11.0.0",
+    "typescript": "^5.2.0",
+    "tsx": "^4.0.0",
+    "bun": "^1.0.0",
+    "vitest": "^0.34.0",
+    "@vitest/coverage-v8": "^0.34.0",
+    "eslint": "^8.50.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.0.0"
+  }
+}

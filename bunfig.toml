@@ -1,0 +1,14 @@
+[build]
+target = "node"
+format = "esm"
+splitting = false
+minify = { syntax = true, whitespace = true }
+
+[test]
+root = "src"
+preload = []
+
+[install]
+optional = false
+dev = true
+peer = true

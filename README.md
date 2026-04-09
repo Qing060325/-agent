@@ -15,6 +15,16 @@
 - **Token Budget Management** - Automatic token usage tracking and optimization
 
 ### Advanced Features
+- **Streaming Output** - Real-time token-by-token streaming responses via SSE
+- **Session Persistence** - Save, resume, list, and export sessions with JSONL storage
+- **Tab Completion** - Bash/Zsh/Fish shell auto-completion support
+- **Local Model Support** - Ollama integration for offline local LLM inference
+- **Git-Aware Tools** - Auto-detect repo context, diff, log, branches for AI consumption
+- **TUI Interface** - Rich terminal UI with React/Ink (chat panel, status bar, split view)
+- **Telemetry** - Optional anonymous usage tracking with detailed reports
+- **Watch Mode** - Monitor file changes and auto-trigger commands
+- **Config Validation** - Schema validation with fix suggestions
+- **Multi-Format Export** - Export sessions to Markdown, HTML, JSON, or plain text
 - **Context Compression** - Automatic compression of long conversation histories
 - **Sandbox Execution** - Secure execution environment for tools
 - **Permission System** - Fine-grained access control
@@ -80,6 +90,60 @@ manus bash "ls -la"
 /help                   # Show help
 /clear                  # Clear session
 /config                 # Show configuration
+```
+
+### New Features (v1.1)
+
+#### Session Management
+```bash
+/session-save           # Save current session
+/session-list           # List all saved sessions
+/session-resume <id>    # Resume a saved session
+/session-delete <id>    # Delete a saved session
+/session-export <id>    # Export session to Markdown
+```
+
+#### Git Context
+```bash
+/manus git              # Show git repo context (branch, status, recent commits)
+```
+
+#### Local Models (Ollama)
+```bash
+/manus ollama-status    # Check if Ollama is running, list models
+/manus ollama-generate "prompt"  # Generate with local model
+```
+
+#### Config & Validation
+```bash
+/manus config-validate  # Validate config file for errors
+/manus config-init      # Create default config file
+```
+
+#### Telemetry
+```bash
+/manus telemetry          # Show usage report
+/manus telemetry enable   # Enable telemetry
+/manus telemetry disable  # Disable telemetry
+```
+
+#### Export
+```bash
+/manus export markdown output.md  # Export to Markdown
+/manus export html output.html    # Export to HTML
+/manus export json output.json    # Export to JSON
+```
+
+#### Watch Mode
+```bash
+/manus watch <path> "<command>"  # Watch file changes, run command
+```
+
+#### Shell Completion
+```bash
+/manus completion bash    # Generate bash completion
+/manus completion zsh     # Generate zsh completion
+/manus completion install # Auto-install for current shell
 ```
 
 ## 🏗️ Architecture
@@ -163,6 +227,9 @@ node dist/cli.js --version
 | Web Tools | 2 | WebFetch, WebSearch |
 | Agent Tools | 2 | AgentTool, AgentTrigger |
 | Editor Tools | 2 | NotebookEdit, SkillTool |
+| Git Tools | 5 | GitStatus, GitDiff, GitLog, GitBranch, GitContext |
+| Watch Tools | 3 | Watch, WatchStop, WatchList |
+| Export Tools | 1 | Export (Markdown/HTML/JSON/Text) |
 | Other | 20+ | LSPTool, TaskTool, CronTool, MCPTool |
 
 ### Command Categories (88+ commands)

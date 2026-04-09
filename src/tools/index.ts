@@ -9,6 +9,9 @@ export { MEDIA_TOOLS } from './MediaTools.js';
 export { DOCUMENT_TOOLS } from './DocumentTools.js';
 export { CLOUD_TOOLS } from './CloudTools.js';
 export { ADVANCED_WEB_TOOLS } from './AdvancedWebTools.js';
+export { GIT_TOOLS } from './GitTools.js';
+export { WATCH_TOOLS } from './WatchTool.js';
+export { EXPORT_TOOLS } from './ExportTools.js';
 
 import { ToolRegistry } from './ToolRegistry.js';
 import { FILE_TOOLS } from './FileTools.js';
@@ -20,6 +23,9 @@ import { MEDIA_TOOLS } from './MediaTools.js';
 import { DOCUMENT_TOOLS } from './DocumentTools.js';
 import { CLOUD_TOOLS } from './CloudTools.js';
 import { ADVANCED_WEB_TOOLS } from './AdvancedWebTools.js';
+import { GIT_TOOLS } from './GitTools.js';
+import { WATCH_TOOLS } from './WatchTool.js';
+import { EXPORT_TOOLS } from './ExportTools.js';
 
 export const globalToolRegistry = new ToolRegistry();
 
@@ -53,6 +59,15 @@ export function initializeAllTools(registry: ToolRegistry): void {
 
   // Register advanced web tools
   ADVANCED_WEB_TOOLS.forEach((tool) => registry.register(tool));
+
+  // Register git tools
+  GIT_TOOLS.forEach((tool) => registry.register(tool));
+
+  // Register watch tools
+  WATCH_TOOLS.forEach((tool) => registry.register(tool));
+
+  // Register export tools
+  EXPORT_TOOLS.forEach((tool) => registry.register(tool));
 
   const stats = registry.getStats();
   console.log(

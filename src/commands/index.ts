@@ -13,6 +13,8 @@ export { DOCUMENT_COMMANDS } from './DocumentCommands.js';
 export { CLOUD_COMMANDS } from './CloudCommands.js';
 export { ADVANCED_WEB_COMMANDS } from './AdvancedWebCommands.js';
 export { EXTENSION_COMMANDS } from './ExtensionCommands.js';
+export { SESSION_COMMANDS } from './SessionCommands.js';
+export { FEATURE_COMMANDS } from './FeatureCommands.js';
 
 import { CommandRegistry } from './CommandRegistry.js';
 import { BASIC_COMMANDS } from './BasicCommands.js';
@@ -29,6 +31,8 @@ import { DOCUMENT_COMMANDS } from './DocumentCommands.js';
 import { CLOUD_COMMANDS } from './CloudCommands.js';
 import { ADVANCED_WEB_COMMANDS } from './AdvancedWebCommands.js';
 import { EXTENSION_COMMANDS } from './ExtensionCommands.js';
+import { SESSION_COMMANDS } from './SessionCommands.js';
+import { FEATURE_COMMANDS } from './FeatureCommands.js';
 
 /**
  * Initialize all commands
@@ -75,6 +79,12 @@ export function initializeAllCommands(registry: CommandRegistry): void {
 
   // Register extension commands
   EXTENSION_COMMANDS.forEach((cmd) => registry.register(cmd));
+
+  // Register session commands
+  SESSION_COMMANDS.forEach((cmd) => registry.register(cmd));
+
+  // Register feature commands (config, ollama, telemetry, watch, export, git, completion)
+  FEATURE_COMMANDS.forEach((cmd) => registry.register(cmd));
 
   const stats = registry.getStats();
   console.log(

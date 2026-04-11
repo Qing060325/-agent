@@ -6,7 +6,8 @@
   --line: #232b3a;
   --primary: #4f8cff;
   --ok: #2abf77;
-  --run: #f4b400;
+  --warn: #f4b400;
+  --danger: #ff6b6b;
 }
 
 * {
@@ -32,6 +33,7 @@ body {
   top: 0;
   background: rgba(14, 17, 23, 0.92);
   backdrop-filter: blur(6px);
+  z-index: 10;
 }
 
 .actions {
@@ -59,7 +61,7 @@ body {
 
 .layout {
   display: grid;
-  grid-template-columns: 360px 1fr 320px;
+  grid-template-columns: 370px 1fr 340px;
   gap: 14px;
   padding: 14px;
 }
@@ -83,7 +85,28 @@ body {
   font-size: 14px;
 }
 
-#taskList {
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.tab {
+  border: 1px solid #2f3b50;
+  background: #111728;
+  color: #c9d6f1;
+  border-radius: 999px;
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+.tab.active {
+  border-color: #4f8cff;
+  color: #dfeafe;
+  background: rgba(79, 140, 255, 0.22);
+}
+
+.task-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -99,6 +122,21 @@ body {
   background: #111622;
 }
 
+.task-title {
+  font-size: 14px;
+}
+
+.task-meta {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.task-item.empty {
+  color: var(--muted);
+  text-align: center;
+}
+
 .stack-grid {
   display: grid;
   gap: 8px;
@@ -108,11 +146,47 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
+}
+
+.provider-item {
+  display: block;
+}
+
+.provider-head {
+  margin-bottom: 8px;
 }
 
 .provider-meta {
   color: var(--muted);
   font-size: 12px;
+}
+
+.provider-metrics {
+  display: grid;
+  gap: 6px;
+}
+
+.provider-metrics label {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  align-items: center;
+  gap: 8px;
+  color: #c9d6f1;
+  font-size: 12px;
+}
+
+.metric {
+  height: 8px;
+  border-radius: 999px;
+  background: #1d273a;
+  overflow: hidden;
+}
+
+.metric span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #4f8cff, #80d5ff);
 }
 
 .pill-list {
@@ -155,11 +229,6 @@ body {
 .status.connected {
   background: rgba(42, 191, 119, 0.16);
   color: #8ef0bf;
-}
-
-.status.available {
-  background: rgba(79, 140, 255, 0.15);
-  color: #95b8ff;
 }
 
 .messages {
@@ -229,6 +298,11 @@ button.tiny {
   font-size: 12px;
 }
 
+button.tiny.online {
+  background: rgba(42, 191, 119, 0.2);
+  color: #8ef0bf;
+}
+
 .account-box {
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -252,6 +326,31 @@ button.tiny {
   padding-left: 18px;
   color: #d7deef;
   line-height: 1.5;
+}
+
+.log-level {
+  display: inline-block;
+  min-width: 40px;
+  font-size: 11px;
+  border-radius: 6px;
+  padding: 1px 5px;
+  text-align: center;
+  margin-right: 6px;
+}
+
+.log-level.info {
+  background: rgba(79, 140, 255, 0.2);
+  color: #9dc0ff;
+}
+
+.log-level.warn {
+  background: rgba(244, 180, 0, 0.2);
+  color: #ffd867;
+}
+
+.log-level.error {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff9f9f;
 }
 
 .footer {

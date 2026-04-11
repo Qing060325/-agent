@@ -3,30 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manus 复刻原型 v0.1 Beta</title>
+    <title>Manus 复刻原型 v0.2 Beta</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="topbar">
       <div class="brand">
         MANUS-STYLE
-        <span class="badge">v0.1 Beta</span>
+        <span class="badge">v0.2 Beta</span>
       </div>
       <div class="actions">
-        <button id="googleAuthBtn" class="secondary">接入 Google 账号</button>
-        <button id="simulateBtn" class="primary">模拟自动执行</button>
+        <button id="googleAuthBtn" class="secondary">连接 Google</button>
+        <button id="simulateBtn" class="primary">执行当前任务</button>
       </div>
     </header>
 
     <main class="layout">
       <section class="panel tasks">
         <h2>任务面板</h2>
-        <ul id="taskList"></ul>
+        <div id="taskFilters" class="filter-tabs" role="tablist" aria-label="任务筛选"></div>
+        <ul id="taskList" class="task-list"></ul>
 
-        <h3>全球大模型厂商</h3>
+        <h3>全球大模型厂商能力图</h3>
         <div id="providerList" class="stack-grid"></div>
 
-        <h3>Skills</h3>
+        <h3>Skills 编排能力</h3>
         <ul id="skillList" class="pill-list"></ul>
 
         <h3>通讯平台连接</h3>
@@ -34,13 +35,13 @@
       </section>
 
       <section class="panel chat">
-        <h2>Agent 对话</h2>
+        <h2>AI 对话区</h2>
         <div id="messages" class="messages"></div>
         <form id="chatForm" class="chat-form">
           <input
             id="chatInput"
             type="text"
-            placeholder="例如：帮我整理这周的项目进度"
+            placeholder="例如：创建一个跨平台日报自动发送任务"
             autocomplete="off"
           />
           <button class="primary" type="submit">发送</button>
@@ -64,7 +65,7 @@
       </div>
     </template>
 
-    <footer class="footer">当前版本：v0.1 Beta（测试版）</footer>
+    <footer class="footer">当前版本：v0.2 Beta（测试版）</footer>
 
     <script src="app.js"></script>
   </body>
